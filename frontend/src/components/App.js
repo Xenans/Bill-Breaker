@@ -1,5 +1,6 @@
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container'
 
 import { Component } from 'react'
 
@@ -81,13 +82,16 @@ class App extends Component {
     render() {
         return (
             <div>
-                <ItemsList
-                    items={this.state.items}
-                    onDelete={this.deleteItem.bind(this)}
-                    onAdd={this.addItem.bind(this)}
-                    changeName={this.changeName.bind(this)}
-                    changePrice={this.changePrice.bind(this)}
-                />
+                <Container>
+                    <h3>Here is what we found</h3>
+                    <ItemsList
+                        items={this.state.items}
+                        onDelete={this.deleteItem.bind(this)}
+                        onAdd={this.addItem.bind(this)}
+                        changeName={this.changeName.bind(this)}
+                        changePrice={this.changePrice.bind(this)}
+                    />
+                </Container>
             </div>
         );
     }

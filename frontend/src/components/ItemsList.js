@@ -4,7 +4,7 @@ import Items from './Items'
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+
 import Form from 'react-bootstrap/Form'
 import '../style/ItemList.css';
 
@@ -16,30 +16,29 @@ class ItemsList extends Component {
 
     }
 
-
-
-
     render() {
         return (
             <div>
-                <Container>
-                    <Col md={4}>
-                        <Form>
 
-                            {this.props.items.map((item) => (
-                                <Items
-                                    item={item}
-                                    onDelete={this.props.onDelete}
-                                    changeName={this.props.changeName}
-                                    changePrice={this.props.changePrice}
-                                />
-                            ))}
-                        </Form>
-                        <Button onClick={this.props.onAdd}>
-                            Add Item
-                        </Button>
-                    </Col>
-                </Container>
+                <Col>
+                    <Form>
+                        {this.props.items.map((item) => (
+                            <Items
+                                item={item}
+                                onDelete={this.props.onDelete}
+                                changeName={this.props.changeName}
+                                changePrice={this.props.changePrice}
+                            />
+                        ))}
+                    </Form>
+                    <Button onClick={this.props.onAdd}>
+                        Add Item
+                    </Button>
+                    <Button>
+                        Next
+                    </Button>
+                </Col>
+
             </div>
         );
     }
