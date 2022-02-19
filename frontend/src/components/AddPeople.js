@@ -25,8 +25,6 @@ class AddPeople extends Component {
                     </Form.Group>
                 </Form>
 
-
-
                 <Button className="everyoneButton">That's Everyone</Button>
                 <Button className="addButton">Submit</Button>
             </>
