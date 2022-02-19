@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CloseButton from 'react-bootstrap/CloseButton';
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button';
 import Items from './Items'
 
@@ -9,24 +10,33 @@ class ItemsList extends Component {
 
     constructor(props) {
         super(props);
+
+
     }
+
+
 
 
     render() {
         return (
             <div>
-                <table>
-                    <tr>
-                        <th>Item</th>
-                        <th>Price</th>
-                    </tr>
-                    {this.props.items.map((item) => (
-                        <Items item={item} onDelete={this.props.onDelete} />
-                    ))}
-                </table>
-                <Button onClick={this.props.onAdd}>
-                    Add Item
-                </Button>
+                <Container>
+                    <Col md={4}>
+                        <form>
+                            {this.props.items.map((item) => (
+                                <Items
+                                    item={item}
+                                    onDelete={this.props.onDelete}
+                                    changeName={this.props.changeName}
+                                    changePrice={this.props.changePrice}
+                                />
+                            ))}
+                        </form>
+                        <Button onClick={this.props.onAdd}>
+                            Add Item
+                        </Button>
+                    </Col>
+                </Container>
             </div>
         );
     }

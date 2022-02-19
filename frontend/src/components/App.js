@@ -9,6 +9,10 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+
+        this.changeName = this.changeName.bind(this)
+        this.changePrice = this.changePrice.bind(this)
+
         this.state = {
             items:
                 [{
@@ -57,10 +61,33 @@ class App extends Component {
         //TODO maybe look through every person and remove it from them...???
     }
 
+    changeName = (e, id) => {
+        const idx = this.state.items.findIndex(x => x.id === id)
+
+        this.state.items[idx].itemName = e
+        //improper
+        this.setState(this.state.items)
+    }
+
+    changePrice = (e, id) => {
+        const idx = this.state.items.findIndex(x => x.id === id)
+
+        this.state.items[idx].itemPrice = e
+        //improper
+        this.setState(this.state.items)
+    }
+
+
     render() {
         return (
             <div>
-                <ItemsList items={this.state.items} onDelete={this.deleteItem.bind(this)} onAdd={this.addItem.bind(this)} />
+                <ItemsList
+                    items={this.state.items}
+                    onDelete={this.deleteItem.bind(this)}
+                    onAdd={this.addItem.bind(this)}
+                    changeName={this.changeName.bind(this)}
+                    changePrice={this.changePrice.bind(this)}
+                />
             </div>
         );
     }
