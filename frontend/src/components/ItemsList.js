@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button';
+
 import Items from './Items'
 
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
 import '../style/ItemList.css';
 
 class ItemsList extends Component {
@@ -22,7 +24,8 @@ class ItemsList extends Component {
             <div>
                 <Container>
                     <Col md={4}>
-                        <form>
+                        <Form>
+
                             {this.props.items.map((item) => (
                                 <Items
                                     item={item}
@@ -31,7 +34,7 @@ class ItemsList extends Component {
                                     changePrice={this.props.changePrice}
                                 />
                             ))}
-                        </form>
+                        </Form>
                         <Button onClick={this.props.onAdd}>
                             Add Item
                         </Button>
