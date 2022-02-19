@@ -28,12 +28,39 @@ class App extends Component {
                 },
                 ]
         };
+
+    }
+
+    addItem = (e) => {
+        e.preventDefault()
+        var nextId
+        if (this.state.items.length === 0) {
+            nextId = 1
+        }
+        else {
+            nextId = this.state.items[this.state.items.length - 1].id + 1
+        }
+        const item = {
+            id: nextId,
+            itemName: "Enter Item",
+            itemPrice: "Enter Price",
+        }
+
+        this.setState({ items: this.state.items.concat(item) })
+    }
+
+    deleteItem = (id) => {
+        // get a new array where the item does not have the given id.
+        const newArr = this.state.items.filter((item) => item.id !== id)
+        this.setState({ items: newArr })
+
+        //TODO maybe look through every person and remove it from them...???
     }
 
     render() {
         return (
             <div>
-                <ItemsList items={this.state.items} />
+                <ItemsList items={this.state.items} onDelete={this.deleteItem.bind(this)} onAdd={this.addItem.bind(this)} />
             </div>
         );
     }

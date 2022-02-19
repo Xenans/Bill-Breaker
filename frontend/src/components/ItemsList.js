@@ -11,10 +11,6 @@ class ItemsList extends Component {
         super(props);
     }
 
-    handleClick = () => {
-        console.log("this is:", this)
-
-    }
 
     render() {
         return (
@@ -25,10 +21,10 @@ class ItemsList extends Component {
                         <th>Price</th>
                     </tr>
                     {this.props.items.map((item) => (
-                        <Items item={item} />
+                        <Items item={item} onDelete={this.props.onDelete} />
                     ))}
                 </table>
-                <Button onClick={this.handleClick}>
+                <Button onClick={this.props.onAdd}>
                     Add Item
                 </Button>
             </div>
