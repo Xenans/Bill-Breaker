@@ -1,9 +1,9 @@
-import '../style/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Component } from 'react'
 
 import ItemsList from './ItemsList'
+
+import '../style/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -11,84 +11,82 @@ class App extends Component {
         super(props);
 
         this.state = {
-            items:
-                [{
+            items: [
+                {
                     id: 1,
-                    itemName: "Item1",
-                    itemPrice: "30",
+                    itemName: "Item 1",
+                    itemPrice: 30
                 },
                 {
                     id: 2,
-                    itemName: "Item2",
-                    itemPrice: "40",
-                },
-                {
-                    id: 3,
-                    itemName: "Item3",
-                    itemPrice: "60",
-                },
-                ]
+                    itemName: "Item 2",
+                    itemPrice: 40
+                }       
+            ],
+            users: []
         };
 
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
-        this.changeName = this.changeName.bind(this);
-        this.changePrice = this.changePrice.bind(this);
+        this.changeItemName = this.changeItemName.bind(this);
+        this.changeItemPrice = this.changeItemPrice.bind(this);
     }
 
-    addItem(e) {
-        e.preventDefault()
-        var nextId
+    addItem(event) {
+        event.preventDefault();
+
+        let nextId;
         if (this.state.items.length === 0) {
-            nextId = 1
+            nextId = 1;
         }
         else {
-            nextId = this.state.items[this.state.items.length - 1].id + 1
+            nextId = this.state.items[this.state.items.length - 1].id + 1;
         }
+
         const item = {
             id: nextId,
             itemName: "",
             itemPrice: "",
-        }
+        };
 
-        this.setState({ items: this.state.items.concat(item) })
+        this.setState({ items: this.state.items.concat(item) });
     }
 
-    deleteItem(id) {
+    deleteItem(itemId) {
         // get a new array where the item does not have the given id.
-        const newArr = this.state.items.filter((item) => item.id !== id)
-        this.setState({ items: newArr })
+        const newArr = this.state.items.filter((item) => item.itemId !== itemId);
+        this.setState({ items: newArr });
 
         //TODO maybe look through every person and remove it from them...???
     }
 
-    changeName(newItemName, id) {
-        const idx = this.state.items.findIndex(x => x.id === id)
+    changeItemName(newItemName, itemId) {
+        const idx = this.state.items.findIndex(x => x.itemId === itemId);
 
-        this.state.items[idx].itemName = newItemName
+        this.state.items[idx].itemName = newItemName;
         //improper
-        this.setState(this.state.items)
+        this.setState(this.state.items);
     }
 
-    changePrice(e, id) {
-        const idx = this.state.items.findIndex(x => x.id === id)
+    changeItemPrice(newItemPrice, itemId) {
+        const idx = this.state.items.findIndex(x => x.itemId === itemId);
 
-        this.state.items[idx].itemPrice = e
+        this.state.items[idx].itemPrice = newItemPrice;
         //improper
-        this.setState(this.state.items)
+        this.setState(this.state.items);
     }
 
     render() {
         return (
-            <div>
-                <ItemsList
+            <>
+                <ItemsList 
                     items={this.state.items}
-                    onDelete={this.deleteItem}
-                    onAdd={this.addItem}
-                    changeName={this.changeName}
-                    changePrice={this.changePrice}
+                    onAddItem={this.addItem}
+                    onDeleteItem={this.deleteItem}
+                    onChangeItemName={this.changeItemName}
+                    onChangeItemPrice={this.changeItemPrice}
                 />
-            </div>
+            </>
         );
     }
 }

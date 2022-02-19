@@ -5,8 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 
-
-class Items extends Component {
+class Item extends Component {
 
     constructor(props) {
         super(props);
@@ -22,17 +21,17 @@ class Items extends Component {
                                 type="text"
                                 placeholder="Enter Item"
                                 value={this.props.item.itemName}
-                                onChange={(e) => this.props.changeName(e.target.value, this.props.item.id)}
+                                onChange={(e) => this.props.onChangeItemName(e.target.value, this.props.item.id)}
                             />
                             <Form.Control
                                 type="number"
                                 placeholder="Enter Price"
                                 value={this.props.item.itemPrice}
-                                onChange={(e) => this.props.changePrice(e.target.value, this.props.item.id)}
+                                onChange={(e) => this.props.onChangeItemPrice(e.target.value, this.props.item.id)}
                             />
                         </Col>
                         <Col>
-                            <CloseButton onClick={() => this.props.onDelete(this.props.item.id)} />
+                            <CloseButton onClick={() => this.props.onDeleteItem(this.props.item.id)} />
                         </Col>
                     </Row>
                 </Form.Group>
@@ -41,4 +40,4 @@ class Items extends Component {
     }
 }
 
-export default Items
+export default Item
