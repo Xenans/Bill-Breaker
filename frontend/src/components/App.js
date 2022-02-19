@@ -2,11 +2,13 @@ import React from 'react';
 import Navbar from "./Navbar/Navbar";
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container'
 
 import { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import ItemsList from './ItemsList'
+import AddPeople from './AddPeople'
 
 class App extends Component {
 
@@ -96,7 +98,7 @@ class App extends Component {
                                 changeName={this.changeName.bind(this)}
                                 changePrice={this.changePrice.bind(this)}
                                 />
-                                
+                                <AddPeople />
                             </Route>
                             <Route path="/ddd" element={<h1>dsadsa</h1>}>
                                 <h1>dsadsa</h1>
