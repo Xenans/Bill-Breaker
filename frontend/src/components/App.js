@@ -46,8 +46,8 @@ class App extends Component {
         }
         const item = {
             id: nextId,
-            itemName: "Enter Item",
-            itemPrice: "Enter Price",
+            itemName: "",
+            itemPrice: "",
         }
 
         this.setState({ items: this.state.items.concat(item) })
