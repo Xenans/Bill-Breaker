@@ -2,6 +2,7 @@ import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Component } from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import ItemsList from './ItemsList'
 
@@ -80,15 +81,21 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <ItemsList
-                    items={this.state.items}
-                    onDelete={this.deleteItem.bind(this)}
-                    onAdd={this.addItem.bind(this)}
-                    changeName={this.changeName.bind(this)}
-                    changePrice={this.changePrice.bind(this)}
-                />
-            </div>
+            <Router>
+                <div>
+                    <Switch>
+                        <ItemsList
+                            items={this.state.items}
+                            onDelete={this.deleteItem.bind(this)}
+                            onAdd={this.addItem.bind(this)}
+                            changeName={this.changeName.bind(this)}
+                            changePrice={this.changePrice.bind(this)}
+                        />
+
+                    </Switch>
+
+                </div>
+            </Router>
         );
     }
 }

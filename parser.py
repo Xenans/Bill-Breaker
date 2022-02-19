@@ -1,8 +1,10 @@
 import pdfplumber
 import re
 
-files = ["./receipt.pdf", "./receiptburrito.pdf",
-         "./receipttea.pdf", "./receiptsushi.pdf"]
+# files = ["./receipt.pdf", "./receiptburrito.pdf",
+#          "./receipttea.pdf", "./receiptsushi.pdf"]
+
+files = ['./receipt.pdf']
 
 for filename in files:
 
@@ -21,6 +23,10 @@ for filename in files:
         # text = first_page.extract_text(
         #     x_tolerance=3, y_tolerance=3, layout=False, x_density=7.25, y_density=13)
 
+        items = re.findall(
+            r'^(\d) (.+) CA\$([\d\.]+)', text, flags=re.MULTILINE)
+        # items = re.findall(r'^\d.+ [^\s]+', text, flags=re.MULTILINE)
+
         total = re.search(r'Total [^\s]+', text)
         subtotal = re.search(r'Subtotal [^\s]+', text)
         tax = re.search(r'Tax [^\s]+', text)
@@ -31,7 +37,8 @@ for filename in files:
 
         values = re.findall(r'\$[^\s)]+', text)
 
-        print(text)
+        # print(text)
+        print(items)
 
         print('=== Specific parsed values ===')
         for specific in [total, subtotal, tax, service, delivery, promotion, tip]:
