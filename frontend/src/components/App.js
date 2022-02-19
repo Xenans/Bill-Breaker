@@ -2,10 +2,12 @@ import React from 'react';
 import Navbar from "./Navbar/Navbar";
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container'
 
 import { Component } from 'react'
 
 import ItemsList from './ItemsList'
+import AddPeople from './AddPeople'
 
 class App extends Component {
 
@@ -85,13 +87,14 @@ class App extends Component {
             <div className="App">
                 <Navbar />
                 <div className="content">
-                <ItemsList
-                    items={this.state.items}
-                    onDelete={this.deleteItem.bind(this)}
-                    onAdd={this.addItem.bind(this)}
-                    changeName={this.changeName.bind(this)}
-                    changePrice={this.changePrice.bind(this)}
-                />
+                    <ItemsList
+                        items={this.state.items}
+                        onDelete={this.deleteItem.bind(this)}
+                        onAdd={this.addItem.bind(this)}
+                        changeName={this.changeName.bind(this)}
+                        changePrice={this.changePrice.bind(this)}
+                    />
+                    <AddPeople />
                 </div>
 
             </div>
