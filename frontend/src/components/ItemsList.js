@@ -4,6 +4,8 @@ import Items from './Items'
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 
 import Form from 'react-bootstrap/Form'
 import '../style/ItemList.css';
@@ -18,9 +20,9 @@ class ItemsList extends Component {
 
     render() {
         return (
-            <div>
-
-                <Col>
+            <>
+                <Container>
+                    <h3>Here is what we found</h3>
                     <Form>
                         {this.props.items.map((item) => (
                             <Items
@@ -31,15 +33,17 @@ class ItemsList extends Component {
                             />
                         ))}
                     </Form>
-                    <Button onClick={this.props.onAdd}>
-                        Add Item
-                    </Button>
-                    <Button>
-                        Next
-                    </Button>
-                </Col>
 
-            </div>
+                    <div className="d-flex justify-content-between">
+                        <Button onClick={this.props.onAdd}>
+                            Add Item
+                        </Button>
+                        <Button>
+                            Next
+                        </Button>
+                    </div>
+                </Container>
+            </>
         );
     }
 }

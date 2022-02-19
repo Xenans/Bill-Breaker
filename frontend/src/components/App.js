@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import { Component } from 'react'
 
 import ItemsList from './ItemsList'
+import AddPeople from './AddPeople'
 
 class App extends Component {
 
@@ -82,16 +83,14 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Container>
-                    <h3>Here is what we found</h3>
-                    <ItemsList
-                        items={this.state.items}
-                        onDelete={this.deleteItem.bind(this)}
-                        onAdd={this.addItem.bind(this)}
-                        changeName={this.changeName.bind(this)}
-                        changePrice={this.changePrice.bind(this)}
-                    />
-                </Container>
+                {/* <ItemsList
+                    items={this.state.items}
+                    onDelete={this.deleteItem.bind(this)}
+                    onAdd={this.addItem.bind(this)}
+                    changeName={this.changeName.bind(this)}
+                    changePrice={this.changePrice.bind(this)}
+                /> */}
+                <AddPeople />
             </div>
         );
     }

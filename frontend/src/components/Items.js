@@ -14,6 +14,7 @@ class Items extends Component {
 
     }
 
+
     render() {
         return (
             <>
@@ -33,9 +34,7 @@ class Items extends Component {
                                 onChange={(e) => this.props.changePrice(e.target.value, this.props.item.id)}
                             />
                         </Col>
-                        <Col>
-                            <CloseButton onClick={() => this.props.onDelete(this.props.item.id)} />
-                        </Col>
+                        <CloseButton onClick={() => this.props.onDelete(this.props.item.id)} />
                     </Row>
                 </Form.Group>
             </>
