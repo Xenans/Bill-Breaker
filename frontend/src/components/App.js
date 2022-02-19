@@ -10,9 +10,6 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.changeName = this.changeName.bind(this)
-        this.changePrice = this.changePrice.bind(this)
-
         this.state = {
             items:
                 [{
@@ -33,9 +30,13 @@ class App extends Component {
                 ]
         };
 
+        this.deleteItem = this.deleteItem.bind(this);
+        this.addItem = this.addItem.bind(this);
+        this.changeName = this.changeName.bind(this);
+        this.changePrice = this.changePrice.bind(this);
     }
 
-    addItem = (e) => {
+    addItem(e) {
         e.preventDefault()
         var nextId
         if (this.state.items.length === 0) {
@@ -53,7 +54,7 @@ class App extends Component {
         this.setState({ items: this.state.items.concat(item) })
     }
 
-    deleteItem = (id) => {
+    deleteItem(id) {
         // get a new array where the item does not have the given id.
         const newArr = this.state.items.filter((item) => item.id !== id)
         this.setState({ items: newArr })
@@ -61,15 +62,15 @@ class App extends Component {
         //TODO maybe look through every person and remove it from them...???
     }
 
-    changeName = (e, id) => {
+    changeName(newItemName, id) {
         const idx = this.state.items.findIndex(x => x.id === id)
 
-        this.state.items[idx].itemName = e
+        this.state.items[idx].itemName = newItemName
         //improper
         this.setState(this.state.items)
     }
 
-    changePrice = (e, id) => {
+    changePrice(e, id) {
         const idx = this.state.items.findIndex(x => x.id === id)
 
         this.state.items[idx].itemPrice = e
@@ -77,16 +78,15 @@ class App extends Component {
         this.setState(this.state.items)
     }
 
-
     render() {
         return (
             <div>
                 <ItemsList
                     items={this.state.items}
-                    onDelete={this.deleteItem.bind(this)}
-                    onAdd={this.addItem.bind(this)}
-                    changeName={this.changeName.bind(this)}
-                    changePrice={this.changePrice.bind(this)}
+                    onDelete={this.deleteItem}
+                    onAdd={this.addItem}
+                    changeName={this.changeName}
+                    changePrice={this.changePrice}
                 />
             </div>
         );

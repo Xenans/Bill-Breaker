@@ -12,12 +12,7 @@ class ItemsList extends Component {
 
     constructor(props) {
         super(props);
-
-
     }
-
-
-
 
     render() {
         return (
@@ -25,7 +20,6 @@ class ItemsList extends Component {
                 <Container>
                     <Col md={4}>
                         <Form>
-
                             {this.props.items.map((item) => (
                                 <Items
                                     item={item}

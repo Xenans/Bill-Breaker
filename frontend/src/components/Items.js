@@ -10,13 +10,7 @@ class Items extends Component {
 
     constructor(props) {
         super(props);
-
-
     }
-
-
-
-
 
     render() {
         return (
@@ -46,10 +40,5 @@ class Items extends Component {
         );
     }
 }
-
-// Items.defaultProps = {
-//     itemName: 'Enter Name',
-//     itemPrice: 'EnterPrice'
-// }
 
 export default Items
