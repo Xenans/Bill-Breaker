@@ -25,7 +25,7 @@ class Items extends Component {
                 <tr>
                     <td contenteditable='true' onchange={this.changeName}>{this.props.item.itemName}</td>
                     <td contenteditable='true' onchange={this.changePrice}>{this.props.item.itemPrice}</td>
-                    <td><CloseButton /></td>
+                    <td><CloseButton onClick={() => this.props.onDelete(this.props.item.id)} /></td>
                 </tr>
             </>
         );
