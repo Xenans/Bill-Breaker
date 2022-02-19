@@ -4,8 +4,8 @@ import re
 files = ["./receipt.pdf", "./receiptburrito.pdf",
          "./receipttea.pdf", "./receiptsushi.pdf"]
 
-for filename in files:
-
+def processFile(filename):
+ 
     with pdfplumber.open(filename, laparams={"line_overlap": 0.7}) as pdf:
         text = ''
 
@@ -34,18 +34,22 @@ for filename in files:
         print(text)
 
         print('=== Specific parsed values ===')
+        results = []
         for specific in [total, subtotal, tax, service, delivery, promotion, tip]:
             if specific:
                 print(specific.group(0))
+                results.append(specific.group(0))
 
-        print()
+        return values, results
 
-        # print(values)
+    # print(values)
 
-        # Can we assume the total is the first item?
-        # C
+    # Can we assume the total is the first item?
+    # C
 
 
 def cleanMoney(input: str):
     """given an input string which represents money, trims out the currency and returns the monetary value"""
     pass
+
+print(processFile("./receipt.pdf"))

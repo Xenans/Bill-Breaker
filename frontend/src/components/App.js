@@ -8,6 +8,7 @@ import { Component } from 'react'
 
 import ItemsList from './ItemsList'
 import AddPeople from './AddPeople'
+import Upload from './Upload';
 
 class App extends Component {
 
@@ -84,20 +85,21 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <Navbar />
-                <div className="content">
-                    <ItemsList
-                        items={this.state.items}
-                        onDelete={this.deleteItem.bind(this)}
-                        onAdd={this.addItem.bind(this)}
-                        changeName={this.changeName.bind(this)}
-                        changePrice={this.changePrice.bind(this)}
-                    />
-                    <AddPeople />
-                </div>
+            // <div className="App">
+            //     <Navbar />
+            //     <div className="content">
+            //         <ItemsList
+            //             items={this.state.items}
+            //             onDelete={this.deleteItem.bind(this)}
+            //             onAdd={this.addItem.bind(this)}
+            //             changeName={this.changeName.bind(this)}
+            //             changePrice={this.changePrice.bind(this)}
+            //         />
+            //         <AddPeople />
+            //     </div>
 
-            </div>
+            // </div>
+            <Upload />
         );
     }
 }
