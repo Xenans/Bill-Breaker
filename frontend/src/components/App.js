@@ -46,10 +46,7 @@ class App extends Component {
             itemPrice: "Enter Price",
         }
 
-        this.state.items.push(item)
-
-        // this is probably not right
-        this.setState(this.state.items)
+        this.setState({ items: this.state.items.concat(item) })
     }
 
     deleteItem = (id) => {
