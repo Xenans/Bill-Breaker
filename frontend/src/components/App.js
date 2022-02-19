@@ -1,25 +1,42 @@
-import logo from '../logo.svg';
 import '../style/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Component } from 'react'
+
+import ItemsList from './ItemsList'
+
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            items:
+                [{
+                    id: 1,
+                    itemName: "Item1",
+                    itemPrice: "30",
+                },
+                {
+                    id: 2,
+                    itemName: "Item2",
+                    itemPrice: "40",
+                },
+                {
+                    id: 3,
+                    itemName: "Item3",
+                    itemPrice: "60",
+                },
+                ]
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <ItemsList items={this.state.items} />
+            </div>
+        );
+    }
 }
 
 export default App;
