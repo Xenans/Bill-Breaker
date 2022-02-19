@@ -1,3 +1,5 @@
+import React from 'react';
+import Navbar from "./Navbar/Navbar";
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -80,7 +82,9 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="App">
+                <Navbar />
+                <div className="content">
                 <ItemsList
                     items={this.state.items}
                     onDelete={this.deleteItem.bind(this)}
@@ -88,6 +92,8 @@ class App extends Component {
                     changeName={this.changeName.bind(this)}
                     changePrice={this.changePrice.bind(this)}
                 />
+                </div>
+
             </div>
         );
     }
