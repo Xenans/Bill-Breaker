@@ -3,8 +3,8 @@ import Navbar from "./Navbar/Navbar";
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Component } from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import ItemsList from './ItemsList'
 
@@ -87,15 +87,24 @@ class App extends Component {
                 <div className="App">
                     <Navbar />
                     <div className="content">
-                    <Switch>
-                    <ItemsList
-                        items={this.state.items}
-                        onDelete={this.deleteItem.bind(this)}
-                        onAdd={this.addItem.bind(this)}
-                        changeName={this.changeName.bind(this)}
-                        changePrice={this.changePrice.bind(this)}
-                    />
-                    </Switch>
+                        <Switch>
+                            <Route exact path="/">
+                                <ItemsList
+                                items={this.state.items}
+                                onDelete={this.deleteItem.bind(this)}
+                                onAdd={this.addItem.bind(this)}
+                                changeName={this.changeName.bind(this)}
+                                changePrice={this.changePrice.bind(this)}
+                                />
+                                
+                            </Route>
+                            <Route path="/ddd" element={<h1>dsadsa</h1>}>
+                                <h1>dsadsa</h1>
+                            </Route>
+
+
+                        </Switch>
+
                     </div>
                 </div>
             </Router>
