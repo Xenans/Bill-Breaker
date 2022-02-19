@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
 
+function testfun() {
+    console.log("test")
+}
+
 class Upload extends Component {
 
     constructor(props) {
         super(props);
     }
 
+
+
     clickHandler() {
-        console.log(this)
+        testfun()
     }
 
     render() {
