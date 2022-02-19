@@ -1,4 +1,5 @@
 /venv
+.env
 
 .DS_STORE
 frontend/node_modules
