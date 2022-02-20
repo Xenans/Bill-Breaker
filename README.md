@@ -28,3 +28,6 @@ npm start
 python manage.py runserver
 ```
 5\. If everything was dont corrently, the website should be running on http://localhost:3000/
+
+## Other notes
+Something about a `.env` file for the Django codebase and something about firebase
