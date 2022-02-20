@@ -80,7 +80,7 @@ class Upload extends Component {
 
         return (
 
-            <Container className="mainDiv justify-content-center">
+            <Container className="mainDiv">
                 <Row>
                     {this.fileData()}
                 </Row>
