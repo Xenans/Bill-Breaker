@@ -32,4 +32,4 @@ def parse(filename):
         return(items, results)
 
 if __name__ == "__main__":
-    parse('receipt.pdf')
+    parse('./receipt.pdf')

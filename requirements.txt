@@ -7,3 +7,4 @@ sqlparse==0.4.2
 pdfplumber==0.6.0
 django-cors-headers==3.11.0
 python-decouple==3.6
+pdfplumber==0.6.0

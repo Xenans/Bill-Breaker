@@ -8,6 +8,7 @@ import { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import AddPeople from './AddPeople'
+import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
 
@@ -95,6 +96,7 @@ class App extends Component {
 
     render() {
         return (
+            
             <Router>
                 <div className="App">
                     <Navbar />
@@ -115,6 +117,7 @@ class App extends Component {
                             </Route>
                             <Route path="/ddd" element={<h1>dsadsa</h1>}>
                                 <h1>dsadsa</h1>
+                                <Upload />
                             </Route>
 
 
