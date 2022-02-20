@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from "./Navbar/Navbar";
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container'
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -10,6 +11,8 @@ import AddPeople from './AddPeople'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
+import Signup from './Signup'
+import Login from './Login'
 
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -237,6 +240,9 @@ class App extends Component {
                         <Switch>
                             {/* Welcome route */}
                             <Route exact path="/">
+                                <Container className="mt-4 mb-4">
+                                    <Signup />
+                                </Container>
                                 <Upload
                                     items={this.state.items}
                                     add={this.addItem}
@@ -265,6 +271,11 @@ class App extends Component {
                                     onClick={this.itemClicked} 
                                 />
                             </Route>
+                            
+                            <Container className="mt-4 mb-4">
+                                <Route path="/login" component={Login}>
+                                </Route>
+                            </Container>
 
 
                         </Switch>
