@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import Button from 'react-bootstrap/Button';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
@@ -15,15 +16,22 @@ class Summary extends Component {
 
     render() {
 
+
         return (
-            <Container>
-                {console.log(this.props.users)}
-                {this.props.users.map((user) => (<SummaryList 
-                                user={user.name}
-                                items={user.items.map((itemid)=>(this.props.getItem(itemid)))}
-                                onDelete={this.props.onDelete} />))}
-            
-            </Container>
+            <>
+                <Container>
+                    {console.log(this.props.users)}
+                    {this.props.users.map((user) => (<SummaryList
+                        user={user.name}
+                        items={user.items.map((itemid) => (this.props.getItem(itemid)))}
+                        onDelete={this.props.onDelete} />))}
+
+                </Container>
+                <h1>Add a Person:</h1>
+                <Link to="/bill" className="nextButton">
+                    <Button>Next</Button>
+                </Link>
+            </>
         );
     }
 }
@@ -62,11 +70,11 @@ class SummaryListItem extends Component {
                 <Row>
                     <Col>
                         <Form.Control
-                            type="text" readOnly 
+                            type="text" readOnly
                             value={this.props.item.name}
                         />
                         <Form.Control
-                            type="number" readOnly 
+                            type="number" readOnly
                             value={this.props.item.price}
                         />
                     </Col>
