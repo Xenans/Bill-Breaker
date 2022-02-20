@@ -21,7 +21,7 @@ export const MenuItems = [
     },
     {
         title: 'Import receipt',
-        url: '#',
+        url: '/home',
         cName: 'nav-links'
     },
     {

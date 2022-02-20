@@ -1,23 +1,20 @@
-import { Component } from 'react'
-import React from 'react';
+import { Component } from 'react';
+import Container from 'react-bootstrap/Container';
 import Navbar from "./Navbar/Navbar";
-import '../style/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container'
-
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/App.css';
+
 import AddPeople from './AddPeople'
-import Upload from './Upload';
+import Bill from './Bill'
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
-import Summary from './Summary'
-import Bill from './Bill'
-import Signup from './Signup'
 import Login from './Login'
-
-import '../style/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Signup from './Signup'
+import Summary from './Summary'
+import Upload from './Upload';
 
 class App extends Component {
 
