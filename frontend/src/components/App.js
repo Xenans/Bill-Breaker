@@ -246,10 +246,12 @@ class App extends Component {
                             </Route>
 
                             <Route path="/home">
-                                <Upload
-                                    items={this.state.items}
-                                    add={this.addItem}
-                                />
+                                <Container>
+                                    <Upload
+                                        items={this.state.items}
+                                        add={this.addItem}
+                                    />
+                                </Container>
                             </Route>
 
                             <Route path="/additems">
