@@ -247,11 +247,13 @@ class App extends Component {
                                 </Container>
                             </Route>
 
-                            <Route path="/upload">
-                                <Upload
-                                    items={this.state.items}
-                                    add={this.addItem}
-                                />
+                            <Route path="/home">
+                                <Container>
+                                    <Upload
+                                        items={this.state.items}
+                                        add={this.addItem}
+                                    />
+                                </Container>
                             </Route>
 
                             <Route path="/additems">
@@ -262,7 +264,6 @@ class App extends Component {
                                     onChangeItemName={this.setItemName}
                                     onChangeItemPrice={this.setItemPrice}
                                 />
-                                <h1>dsadsa</h1>
                             </Route>
 
 
@@ -279,7 +280,7 @@ class App extends Component {
                             <Route path="/summary">
                                 <Summary />
                             </Route>
-                            
+
 
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
