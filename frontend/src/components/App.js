@@ -40,6 +40,7 @@ class App extends Component {
             users: []
         };
 
+        this.getItem = this.getItem.bind(this);
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.setItemName = this.setItemName.bind(this);
@@ -47,6 +48,7 @@ class App extends Component {
         this.addUserToItem = this.addUserToItem.bind(this);
         this.removeUserFromItem = this.removeUserFromItem.bind(this);
 
+        this.getUser = this.getUser.bind(this);
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         this.setUserName = this.setUserName.bind(this);
@@ -95,6 +97,13 @@ class App extends Component {
             // Remove all occurrences of the item in the Users state variable's users
             this.state.users.map(user => this.removeItemFromUser(user.id, id));
         }
+    }
+
+    getItem(id) {
+        console.log("DDASDSADAS")
+        console.log(this.state)
+
+        return this.state.items.find(item => item.id === id);
     }
 
     // Sets the name for an item
@@ -181,6 +190,10 @@ class App extends Component {
             // Remove all occurrences of the user in the Item state variable's items
             this.state.items.map(item => this.removeUserFromItem(item.id, id));
         }
+    }
+
+    getUser(id) {
+        return this.state.users.find(user => user.id === id);
     }
 
     // Sets the name for a user
@@ -276,7 +289,12 @@ class App extends Component {
                             </Route>
 
                             <Route path="/summary">
-                                <Summary />
+                                <Summary 
+                                    users = {this.state.users}
+                                    items = {this.state.items}
+                                    onDelete={this.deleteItem}
+                                    getItem = {this.getItem}
+                                    getUser = {this.getUser}/>
                             </Route>
 
                             <Container className="mt-4 mb-4">
