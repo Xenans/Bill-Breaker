@@ -6,8 +6,10 @@ import Container from 'react-bootstrap/Container'
 
 import { Component } from 'react'
 
-import ItemsList from './ItemsList'
 import AddPeople from './AddPeople'
+import FoodSelection from './FoodSelection'
+import ItemsList from './ItemsList'
+
 
 class App extends Component {
 
@@ -81,20 +83,31 @@ class App extends Component {
         this.setState(this.state.items)
     }
 
+    itemClicked = (itemId, userId) => {
+        console.log(itemId)
+        console.log(userId)
+        // add user to the food's user array using item and user id
+
+        // add item to user's food array using user id and item id
+    }
+
 
     render() {
         return (
             <div className="App">
-                <Navbar />
+                {/* <Navbar /> */}
                 <div className="content">
-                    <ItemsList
+                    {/* <ItemsList
                         items={this.state.items}
                         onDelete={this.deleteItem.bind(this)}
                         onAdd={this.addItem.bind(this)}
                         changeName={this.changeName.bind(this)}
                         changePrice={this.changePrice.bind(this)}
                     />
-                    <AddPeople />
+                    <AddPeople /> */}
+                    <FoodSelection
+                        items={this.state.items}
+                        onClick={this.itemClicked.bind(this)} />
                 </div>
 
             </div>
