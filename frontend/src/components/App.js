@@ -1,5 +1,14 @@
 import { Component } from 'react'
+import React from 'react';
+import Navbar from "./Navbar/Navbar";
+import '../style/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import AddPeople from './AddPeople'
+import Upload from './Upload';
+import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
 
 import '../style/App.css';
@@ -41,10 +50,12 @@ class App extends Component {
         this.setUserName = this.setUserName.bind(this);
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
+
+        this.itemClicked = this.itemClicked.bind(this);
     }
 
     // Adds item to Item state variable
-    addItem() {
+    addItem(name="", price="") {
         let nextId;
         if (this.state.items.length === 0) {
             nextId = 1;
@@ -55,8 +66,8 @@ class App extends Component {
 
         const item = {
             id: nextId,
-            name: "",
-            price: "",
+            name: name,
+            price: price,
             users: []
         }
 
@@ -207,17 +218,57 @@ class App extends Component {
         } 
     }
 
+    // Logs item and user id to console
+    itemClicked(itemId, userId) {
+        console.log(itemId)
+        console.log(userId)
+        // add user to the food's user array using item and user id
+
+        // add item to user's food array using user id and item id
+    }
+
     render() {
         return (
-            <>
-                <ItemsList 
-                    items={this.state.items}
-                    onAddItem={this.addItem}
-                    onDeleteItem={this.deleteItem}
-                    onChangeItemName={this.setItemName}
-                    onChangeItemPrice={this.setItemPrice}
-                />
-            </>
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    <div className="content">
+                        <Switch>
+                            {/* Welcome route */}
+                            <Route exact path="/">
+                                <Upload
+                                    items={this.state.items}
+                                    add={this.addItem}
+                                />
+                            </Route>
+
+                            <Route path="/additems">
+                                <ItemsList
+                                    items={this.state.items}
+                                    onDelete={this.deleteItem}
+                                    onAdd={this.addItem}
+                                    changeName={this.setItemName}
+                                    changePrice={this.setItemPrice}
+                                />
+                                <h1>dsadsa</h1>
+                            </Route>
+
+                            <Route path="/selectfood">
+                                <FoodSelection
+                                    items={this.state.items}
+                                    onClick={this.itemClicked.bind(this)} 
+                                />
+                            </Route>
+
+                            <Route path="addpeople">
+                                <AddPeople />
+                            </Route>
+
+                        </Switch>
+
+                    </div>
+                </div>
+            </Router>
         );
     }
 }

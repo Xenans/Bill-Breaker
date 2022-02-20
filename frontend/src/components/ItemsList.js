@@ -3,47 +3,48 @@ import React, { Component } from 'react';
 import Item from './Item'
 
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+
 import Form from 'react-bootstrap/Form'
 
 import '../style/ItemList.css';
+import { Link } from 'react-router-dom'
 
 class ItemsList extends Component {
 
     constructor(props) {
         super(props);
-
-        this.handleAddItem = this.handleAddItem.bind(this);
-    }
-
-    handleAddItem(e) {
-        e.preventDefault();
-        this.props.onAddItem();
     }
 
     render() {
         return (
-            <div>
+            <>
                 <Container>
-                    <Col md={4}>
-                        <Form>
-                            {this.props.items.map((item) => (
-                                <Item
-                                    key={item.id}
-                                    item={item}
-                                    onDeleteItem={this.props.onDeleteItem}
-                                    onChangeItemName={this.props.onChangeItemName}
-                                    onChangeItemPrice={this.props.onChangeItemPrice}
-                                />
-                            ))}
-                        </Form>
-                        <Button onClick={this.handleAddItem}>
+                    <h3>Here is what we found</h3>
+                    <Form>
+                        {this.props.items.map((item) => (
+                            <Item
+                                item={item}
+                                onDelete={this.props.onDelete}
+                                changeName={this.props.changeName}
+                                changePrice={this.props.changePrice}
+                            />
+                        ))}
+                    </Form>
+
+                    <div className="d-flex justify-content-between">
+                        <Button onClick={this.props.onAdd}>
                             Add Item
                         </Button>
-                    </Col>
+                        <Link to="/selectfood" className="nextButton">
+                            <Button>Next</Button>
+                        </Link>
+                        <Button>
+                            Next
+                        </Button>
+                    </div>
                 </Container>
-            </div>
+            </>
         );
     }
 }

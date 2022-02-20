@@ -5,21 +5,22 @@ import App from '../components/App'
 
 describe("App component", () => {
     describe("item tests", () => {
-        it("addItem", () => {
+        it("addItem (default args)", () => {
             const wrapper = shallow(<App />);
 
             wrapper.instance().addItem();
 
-            expect(wrapper.state("items")).toEqual(
-                [
-                    {
-                        id: 1,
-                        name: "",
-                        price: "",
-                        users: []
-                    }
-                ]
-            )
+            expect(wrapper.state("items").length).toEqual(1);
+        })
+
+        it("addItem (specify args)", () => {
+            const wrapper = shallow(<App />);
+
+            wrapper.instance().addItem("Food 1", "20");
+
+            expect(wrapper.state("items").length).toEqual(1);
+            expect(wrapper.state("items")[0]["name"]).toEqual("Food 1");
+            expect(wrapper.state("items")[0]["price"]).toEqual("20");
         })
 
         it("deleteItem (item exists)", () => {

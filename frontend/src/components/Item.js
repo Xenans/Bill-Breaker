@@ -30,9 +30,7 @@ class Item extends Component {
                                 onChange={(e) => this.props.onChangeItemPrice(this.props.item.id, e.target.value)}
                             />
                         </Col>
-                        <Col>
-                            <CloseButton onClick={() => this.props.onDeleteItem(this.props.item.id)} />
-                        </Col>
+                        <CloseButton onClick={() => this.props.onDelete(this.props.item.id)} />
                     </Row>
                 </Form.Group>
             </>
