@@ -130,7 +130,6 @@ class App extends Component {
             }))
 
             // Add the item to the user's items to obey m2m relationship
-            // add item to user
             this.setState(prevState => ({
                 users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
             }))
@@ -213,11 +212,10 @@ class App extends Component {
                 users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
             }))
 
+            // Add the user to the item's users to obey m2m relationship
             this.setState(prevState => ({
                 items: prevState.items.map(item => (item.id === itemId ? { ...item, users: [...item.users, userId] } : item))
             }))
-
-
         }
     }
 
