@@ -39,8 +39,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            items: [{id:1, name:"420", price:"420", users:[1]}, {id:2, name:"69", price:"69", users:[2]}],
-            users: [{id:1, name:"Sean", items:[1]}, {id:2, name:"Terence", items:[2]}]
+            items: [],
+            users: []
         };
 
         this.getItem = this.getItem.bind(this);
