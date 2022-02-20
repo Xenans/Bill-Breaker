@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import AddPeople from './AddPeople'
+import AddPerson from './AddPerson'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
@@ -140,7 +140,7 @@ class App extends Component {
     }
 
     // Adds a user to the User state variable
-    addUser() {
+    addUser(name="") {
         let nextId;
         if (this.state.users.length === 0) {
             nextId = 1;
@@ -151,13 +151,15 @@ class App extends Component {
 
         const user = {
             id: nextId,
-            name: "",
+            name: name,
             items: []
         }
 
         this.setState({ 
             users: this.state.users.concat(user) 
         });
+
+        console.log(this.state.users);
     }
 
     // Removes a user from the Users state variable
@@ -250,12 +252,15 @@ class App extends Component {
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemSelected} 
+                                    user={this.state.users[this.state.users.length - 1]}
+                                    onSelectItem={this.addItemToUser} 
                                 />
                             </Route>
 
-                            <Route path="addpeople">
-                                <AddPeople />
+                            <Route path="/addperson">
+                                <AddPerson 
+                                    onSubmit={this.addUser}
+                                />
                             </Route>
 
                         </Switch>
@@ -268,3 +273,4 @@ class App extends Component {
 }
 
 export default App;
+

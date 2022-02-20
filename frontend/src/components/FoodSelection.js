@@ -10,6 +10,10 @@ import '../style/FoodSelection.css';
 
 class Header extends Component {
 
+    // props:
+    // - onSelectItem -> addItemToUser(userId, itemId)
+    // - items
+    // - user
     constructor(props) {
         super(props);
     }
@@ -39,7 +43,7 @@ class Header extends Component {
                         }
                     </Col>
                 </Container>
-                <Link to="/addpeople" className="nextButton">
+                <Link to="/addPerson" className="nextButton">
                     <Button>Next</Button>
                 </Link>
             </>

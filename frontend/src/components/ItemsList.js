@@ -36,12 +36,9 @@ class ItemsList extends Component {
                         <Button onClick={this.props.onAdd}>
                             Add Item
                         </Button>
-                        <Link to="/selectfood" className="nextButton">
+                        <Link to="/addperson" className="nextButton">
                             <Button>Next</Button>
                         </Link>
-                        <Button>
-                            Next
-                        </Button>
                     </div>
                 </Container>
             </>
