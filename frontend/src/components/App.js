@@ -130,7 +130,10 @@ class App extends Component {
             }))
 
             // Add the item to the user's items to obey m2m relationship
-            this.addItemToUser(userId, itemId);
+            // add item to user
+            this.setState(prevState => ({
+                users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
+            }))
         }
     }
 
@@ -210,8 +213,11 @@ class App extends Component {
                 users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
             }))
 
-            // Add the user to the item's users to obey m2m relationship
-            this.addUserToItem(itemId, userId);
+            this.setState(prevState => ({
+                items: prevState.items.map(item => (item.id === itemId ? { ...item, users: [...item.users, userId] } : item))
+            }))
+
+
         }
     }
 
@@ -268,7 +274,7 @@ class App extends Component {
                                 <FoodSelection
                                     items={this.state.items}
                                     user={this.state.users[this.state.users.length - 1]}
-                                    onSelectItem={this.addItemToUser} 
+                                    onSelectItem={this.addItemToUser}
                                     onDeselectItem={this.removeItemFromUser}
                                 />
                             </Route>
@@ -280,7 +286,7 @@ class App extends Component {
                             </Route>
 
                             <Route path="/summary">
-                                <Summary 
+                                <Summary
                                     users={this.state.users}
                                     items={this.state.items}
                                     onDelete={this.deleteItem}
@@ -292,7 +298,7 @@ class App extends Component {
                             <Route path="/bill">
                                 <Bill
                                     users={this.state.users}
-                                    items={this.state.items} 
+                                    items={this.state.items}
                                 />
                             </Route>
 
