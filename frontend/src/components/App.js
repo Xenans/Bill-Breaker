@@ -247,11 +247,13 @@ class App extends Component {
                                 </Container>
                             </Route>
 
-                            <Route path="/upload">
-                                <Upload
-                                    items={this.state.items}
-                                    add={this.addItem}
-                                />
+                            <Route path="/home">
+                                <Container>
+                                    <Upload
+                                        items={this.state.items}
+                                        add={this.addItem}
+                                    />
+                                </Container>
                             </Route>
 
                             <Route path="/additems">
