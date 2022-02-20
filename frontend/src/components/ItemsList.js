@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import Items from './Items'
+import Item from './Item'
 
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 
 import Form from 'react-bootstrap/Form'
+
 import '../style/ItemList.css';
 import { Link } from 'react-router-dom'
 
@@ -15,8 +14,6 @@ class ItemsList extends Component {
 
     constructor(props) {
         super(props);
-
-
     }
 
     render() {
@@ -26,11 +23,11 @@ class ItemsList extends Component {
                     <h3>Here is what we found</h3>
                     <Form>
                         {this.props.items.map((item) => (
-                            <Items
+                            <Item
                                 item={item}
                                 onDelete={this.props.onDelete}
-                                changeName={this.props.changeName}
-                                changePrice={this.props.changePrice}
+                                onChangeItemName={this.props.onChangeItemName}
+                                onChangeItemPrice={this.props.onChangeItemPrice}
                             />
                         ))}
                     </Form>
