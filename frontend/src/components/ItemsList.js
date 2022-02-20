@@ -32,14 +32,13 @@ class ItemsList extends Component {
                         ))}
                     </Form>
 
-                    <div className="d-flex justify-content-between">
-                        <Button onClick={() => this.props.onAdd()}>
-                            Add Item
-                        </Button>
-                        <Link to="/addperson" className="nextButton">
-                            <Button>Next</Button>
-                        </Link>
-                    </div>
+                    <Button onClick={() => this.props.onAdd()} >
+                        Add Item
+                    </Button>
+                    <Link to="/addperson" className="nextButton">
+                        <Button>Next</Button>
+                    </Link>
+
                 </Container>
             </>
         );

@@ -1,5 +1,5 @@
 .nextButton {
-    position: absolute;
+    position: fixed;
     right: 3%;
     bottom: 7%;
 }
