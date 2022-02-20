@@ -7,8 +7,10 @@ import Container from 'react-bootstrap/Container'
 import { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import ItemsList from './ItemsList'
 import AddPeople from './AddPeople'
+import FoodSelection from './FoodSelection'
+import ItemsList from './ItemsList'
+
 
 class App extends Component {
 
@@ -82,6 +84,14 @@ class App extends Component {
         this.setState(this.state.items)
     }
 
+    itemClicked = (itemId, userId) => {
+        console.log(itemId)
+        console.log(userId)
+        // add user to the food's user array using item and user id
+
+        // add item to user's food array using user id and item id
+    }
+
 
     render() {
         return (
@@ -99,6 +109,9 @@ class App extends Component {
                                 changePrice={this.changePrice.bind(this)}
                                 />
                                 <AddPeople />
+                                <FoodSelection
+                                    items={this.state.items}
+                                    onClick={this.itemClicked.bind(this)} />
                             </Route>
                             <Route path="/ddd" element={<h1>dsadsa</h1>}>
                                 <h1>dsadsa</h1>
