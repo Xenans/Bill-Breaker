@@ -8,25 +8,10 @@ import Container from 'react-bootstrap/Container'
 
 import '../style/FoodSelection.css';
 
-class Header extends Component {
+class FoodSelection extends Component {
 
-    // props:
-    // - onSelectItem -> addItemToUser(userId, itemId)
-    // - items
-    // - user
     constructor(props) {
         super(props);
-    }
-
-    clickHandler(item, e) {
-        this.props.onClick(item.id, e);
-
-        if (!!e.target.className.match(/^unchecked card-body$/)) {
-            e.target.className = "checked card-body"
-        }
-        else {
-            e.target.className = "unchecked card-body"
-        }
     }
 
     render() {
@@ -34,15 +19,18 @@ class Header extends Component {
             <>
                 <Container>
                     <Col>
-                        {this.props.items.map((item) => 
-                                <Card
-                                    onClick={(e) => this.clickHandler(item, e)}>
-                                    <Card.Body className='unchecked'>{item.name}: ${item.price}</Card.Body>
-                                </Card>
-                            )
-                        }
+                        {this.props.items.map((item) => (
+                            <Item 
+                                key={item.id}
+                                item={item} 
+                                user={this.props.user} 
+                                onSelect={this.props.onSelectItem} 
+                                onDeselect={this.props.onDeselectItem} 
+                            />
+                        ))}
                     </Col>
                 </Container>
+
                 <Link to="/addPerson" className="nextButton">
                     <Button>Next</Button>
                 </Link>
@@ -51,4 +39,38 @@ class Header extends Component {
     }
 }
 
-export default Header
+class Item extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state =({
+            selected: false
+        })
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(itemId) {
+        if (this.state.selected) {
+            this.props.onDeselect(this.props.user.id, itemId);
+        } else {
+            this.props.onSelect(this.props.user.id, itemId);
+        }
+
+        this.setState({
+            selected: !this.state.selected
+        })
+    }
+
+    render() {
+        return (
+            <Card onClick={this.handleClick}>
+                <Card.Body className={this.state.selected ? "selected" : "unselected"}>
+                    {this.props.item.name}: ${this.props.item.price}
+                </Card.Body>
+            </Card>
+        );
+    }
+}
+
+export default FoodSelection

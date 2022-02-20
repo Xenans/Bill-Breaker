@@ -52,8 +52,6 @@ class App extends Component {
         this.setUserName = this.setUserName.bind(this);
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
-
-        this.itemSelected = this.itemSelected.bind(this);
     }
 
     // Adds item to Item state variable
@@ -164,7 +162,8 @@ class App extends Component {
             users: this.state.users.concat(user)
         });
 
-        console.log(this.state.users);
+        console.log(this.state.users)
+        console.log(this.state.items)
     }
 
     // Removes a user from the Users state variable
@@ -223,11 +222,6 @@ class App extends Component {
         }
     }
 
-    // Adds the item to the user's items
-    itemSelected(itemId, userId) {
-
-    }
-
     render() {
         return (
             <Router>
@@ -266,6 +260,7 @@ class App extends Component {
                                     items={this.state.items}
                                     user={this.state.users[this.state.users.length - 1]}
                                     onSelectItem={this.addItemToUser} 
+                                    onDeselectItem={this.removeItemFromUser}
                                 />
                             </Route>
 
