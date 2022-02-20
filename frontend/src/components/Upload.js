@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Upload extends Component {
 
@@ -33,7 +33,7 @@ class Upload extends Component {
 
         // Request made to the backend api
         // Send formData object
-        axios.post("http://localhost:8000/api/sean/", formData).then(response => {console.log(response)});
+        axios.post("http://localhost:8000/api/sean/", formData).then(response => { console.log(response) });
     };
 
     // File content to be displayed after
@@ -66,7 +66,9 @@ class Upload extends Component {
                     </Button>
                 </div>
                 {this.fileData()}
-                <Link to="/selectfood" className="nextButton">Next</Link>
+                <Link to="/selectfood" className="nextButton">
+                    <Button>Next</Button>
+                </Link>
             </div>
         );
     }
