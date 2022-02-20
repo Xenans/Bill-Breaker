@@ -1,13 +1,13 @@
-import axios from 'axios';
 import React, { Component } from 'react'
-
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
-import '../style/Upload.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+
+import '../style/Upload.css';
 
 class Upload extends Component {
 

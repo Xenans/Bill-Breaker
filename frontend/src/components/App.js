@@ -1,23 +1,20 @@
 import { Component } from 'react'
 import React from 'react';
-import Navbar from "./Navbar/Navbar";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import AddPeople from './AddPeople'
+import AddPerson from './AddPerson'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
+import Navbar from "./Navbar/Navbar"
 import Summary from './Summary'
 import Bill from './Bill'
 import Signup from './Signup'
 import Login from './Login'
-
-import '../style/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -56,7 +53,7 @@ class App extends Component {
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
 
-        this.itemClicked = this.itemClicked.bind(this);
+        this.itemSelected = this.itemSelected.bind(this);
     }
 
     // Adds item to Item state variable
@@ -148,7 +145,7 @@ class App extends Component {
     }
 
     // Adds a user to the User state variable
-    addUser() {
+    addUser(name="") {
         let nextId;
         if (this.state.users.length === 0) {
             nextId = 1;
@@ -159,13 +156,15 @@ class App extends Component {
 
         const user = {
             id: nextId,
-            name: "",
+            name: name,
             items: []
         }
 
         this.setState({
             users: this.state.users.concat(user)
         });
+
+        console.log(this.state.users);
     }
 
     // Removes a user from the Users state variable
@@ -224,13 +223,9 @@ class App extends Component {
         }
     }
 
-    // Logs item and user id to console
-    itemClicked(itemId, userId) {
-        console.log(itemId)
-        console.log(userId)
-        // add user to the food's user array using item and user id
+    // Adds the item to the user's items
+    itemSelected(itemId, userId) {
 
-        // add item to user's food array using user id and item id
     }
 
     render() {
@@ -266,28 +261,28 @@ class App extends Component {
                                 />
                             </Route>
 
-
-                            <Route path="/addpeople">
-                                <AddPeople />
-                            </Route>
-
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemClicked}
+                                    user={this.state.users[this.state.users.length - 1]}
+                                    onSelectItem={this.addItemToUser} 
                                 />
                             </Route>
+
+                            <Route path="/addperson">
+                                <AddPerson 
+                                    onSubmit={this.addUser}
+                                />
+                            </Route>
+
                             <Route path="/summary">
                                 <Summary />
                             </Route>
-
 
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
                                 </Route>
                             </Container>
-
-
                         </Switch>
 
                     </div>
