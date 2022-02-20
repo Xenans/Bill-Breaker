@@ -10,13 +10,13 @@
     cursor: pointer;
 }
 
-.btn:hover {
+/* .btn:hover {
     padding: 8px 20px;
     transition: all 0.3s ease-out;
     background: #fff;
     color: #6568F4;
     transition: 250ms
-}
+} */
 
 .btn--primary {
     background-color: var(--primary);
