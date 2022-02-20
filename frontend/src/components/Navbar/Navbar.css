@@ -12,6 +12,7 @@
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
+    transform: translate(0%, -20%);
 }
 
 .fa-react {
@@ -96,7 +97,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(25%, 50%);
+        transform: translate(0%, -20%);
     }
 
     .menu-icon {
@@ -104,7 +105,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-100%, 60%);
+        transform: translate(-150%, 40%);
         font-size: 1.8rem;
         cursor: pointer;
     }

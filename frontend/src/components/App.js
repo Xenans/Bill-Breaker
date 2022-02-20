@@ -243,6 +243,9 @@ class App extends Component {
                                 <Container className="mt-4 mb-4">
                                     <Signup />
                                 </Container>
+                            </Route>
+
+                            <Route path="/home">
                                 <Upload
                                     items={this.state.items}
                                     add={this.addItem}
