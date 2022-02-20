@@ -10,6 +10,8 @@ import AddPeople from './AddPeople'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
+import Summary from './Summary'
+import Bill from './Bill'
 
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,7 +57,7 @@ class App extends Component {
     }
 
     // Adds item to Item state variable
-    addItem(name="", price="") {
+    addItem(e, name="", price="") {
         let nextId;
 
         if (this.state.items.length === 0) {
@@ -265,7 +267,9 @@ class App extends Component {
                                     onClick={this.itemClicked} 
                                 />
                             </Route>
-
+                            <Route path="/summary">
+                                <Summary />
+                            </Route>
 
                         </Switch>
 

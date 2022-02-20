@@ -44,7 +44,7 @@ class Upload extends Component {
         for (let i = 0; i < menuitems.length; i++) {
             let menuitem = menuitems[i]
             console.log(menuitem)
-            this.props.add(menuitem[1], menuitem[2])
+            this.props.add(i, menuitem[1], menuitem[2])
 
         }
 
