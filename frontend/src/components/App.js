@@ -54,8 +54,6 @@ class App extends Component {
         this.setUserName = this.setUserName.bind(this);
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
-
-        this.itemSelected = this.itemSelected.bind(this);
     }
 
     // Adds item to Item state variable
@@ -100,8 +98,7 @@ class App extends Component {
     }
 
     getItem(id) {
-        console.log("DDASDSADAS")
-        console.log(this.state)
+        console.log(this.state.items);
 
         return this.state.items.find(item => item.id === id);
     }
@@ -133,7 +130,9 @@ class App extends Component {
             }))
 
             // Add the item to the user's items to obey m2m relationship
-            this.addItemToUser(userId, itemId);
+            this.setState(prevState => ({
+                users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
+            }))
         }
     }
 
@@ -172,8 +171,6 @@ class App extends Component {
         this.setState({
             users: this.state.users.concat(user)
         });
-
-        console.log(this.state.users);
     }
 
     // Removes a user from the Users state variable
@@ -216,7 +213,9 @@ class App extends Component {
             }))
 
             // Add the user to the item's users to obey m2m relationship
-            this.addUserToItem(itemId, userId);
+            this.setState(prevState => ({
+                items: prevState.items.map(item => (item.id === itemId ? { ...item, users: [...item.users, userId] } : item))
+            }))
         }
     }
 
@@ -234,11 +233,6 @@ class App extends Component {
             // Remove the user from the item's users to obey m2m relationship
             this.removeUserFromItem(itemId, userId);
         }
-    }
-
-    // Adds the item to the user's items
-    itemSelected(itemId, userId) {
-
     }
 
     render() {
@@ -279,6 +273,7 @@ class App extends Component {
                                     items={this.state.items}
                                     user={this.state.users[this.state.users.length - 1]}
                                     onSelectItem={this.addItemToUser}
+                                    onDeselectItem={this.removeItemFromUser}
                                 />
                             </Route>
 
@@ -289,23 +284,24 @@ class App extends Component {
                             </Route>
 
                             <Route path="/summary">
-                                <Summary 
-                                    users = {this.state.users}
-                                    items = {this.state.items}
+                                <Summary
+                                    users={this.state.users}
+                                    items={this.state.items}
                                     onDelete={this.deleteItem}
-                                    getItem = {this.getItem}
-                                    getUser = {this.getUser}/>
+                                    getItem={this.getItem}
+                                    getUser={this.getUser}
+                                />
                             </Route>
 
                             <Route path="/bill">
                                 <Bill
                                     users={this.state.users}
-                                    items={this.state.items} />
+                                    items={this.state.items}
+                                />
                             </Route>
 
                             <Container className="mt-4 mb-4">
-                                <Route path="/login" component={Login}>
-                                </Route>
+                                <Route path="/login" component={Login}></Route>
                             </Container>
                         </Switch>
 

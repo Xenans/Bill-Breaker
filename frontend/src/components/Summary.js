@@ -15,19 +15,20 @@ class Summary extends Component {
     }
 
     render() {
-
-
         return (
             <>
                 <Container>
-                    {console.log(this.props.users)}
-                    {this.props.users.map((user) => (<SummaryList
-                        user={user.name}
-                        items={user.items.map((itemid) => (this.props.getItem(itemid)))}
-                        onDelete={this.props.onDelete} />))}
-
+                    {this.props.users.map((user) => (
+                        <SummaryList
+                            user={user.name}
+                            items={user.items.map((itemid) => (this.props.getItem(itemid)))}
+                            onDelete={this.props.onDelete} 
+                        />
+                    ))}
                 </Container>
+
                 <h1>Add a Person:</h1>
+
                 <Link to="/bill" className="nextButton">
                     <Button>Next</Button>
                 </Link>
@@ -41,6 +42,7 @@ class SummaryList extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
             <Container>
@@ -54,8 +56,6 @@ class SummaryList extends Component {
                     ))}
                 </Form>
             </Container>
-
-
         )
     }
 }
@@ -64,6 +64,7 @@ class SummaryListItem extends Component {
     constructor(props) {
         super(props);
     }
+    
     render() {
         return (
             <Form.Group className="w-25 p-3">

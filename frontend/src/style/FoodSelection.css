@@ -4,10 +4,10 @@
     bottom: 7%;
 }
 
-.unchecked {
+.unselected {
     background-color: rgb(237, 246, 249)
 }
 
-.checked {
+.selected {
     background-color: rgb(131, 197, 190)
 }
