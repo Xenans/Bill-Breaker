@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -145,7 +145,7 @@ class App extends Component {
     }
 
     // Adds a user to the User state variable
-    addUser(name="") {
+    addUser(name = "") {
         let nextId;
         if (this.state.users.length === 0) {
             nextId = 1;
@@ -265,18 +265,24 @@ class App extends Component {
                                 <FoodSelection
                                     items={this.state.items}
                                     user={this.state.users[this.state.users.length - 1]}
-                                    onSelectItem={this.addItemToUser} 
+                                    onSelectItem={this.addItemToUser}
                                 />
                             </Route>
 
                             <Route path="/addperson">
-                                <AddPerson 
+                                <AddPerson
                                     onSubmit={this.addUser}
                                 />
                             </Route>
 
                             <Route path="/summary">
                                 <Summary />
+                            </Route>
+
+                            <Route path="/bill">
+                                <Bill
+                                    users={this.state.users}
+                                    items={this.state.items} />
                             </Route>
 
                             <Container className="mt-4 mb-4">
