@@ -27,7 +27,12 @@ class Summary extends Component {
                     ))}
                 </Container>
 
-                <h1>Add a Person:</h1>
+                <h1>Remaining items:</h1>
+                <SummaryList
+                            user="Unpaid"
+                            items={this.props.items.filter(item => item.users.length === 0)}
+                            onDelete={this.props.onDelete} 
+                        />
 
                 <Link to="/bill" className="nextButton">
                     <Button>Next</Button>
