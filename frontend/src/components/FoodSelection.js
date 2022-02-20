@@ -33,7 +33,7 @@ class Header extends Component {
                         (<Card
                             // style={{ width: '20rem' }}
                             onClick={(e) => this.clickHandler(item, this.props.onClick, e)}>
-                            <Card.Body className='unchecked'>{item.itemName}: ${item.itemPrice}</Card.Body>
+                            <Card.Body className='unchecked'>{item.name}: ${item.price}</Card.Body>
                         </Card>))}
                     </Col>
                 </Container>
