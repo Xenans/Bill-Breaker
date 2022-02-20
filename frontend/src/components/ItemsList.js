@@ -13,6 +13,13 @@ class ItemsList extends Component {
 
     constructor(props) {
         super(props);
+
+        this.handleAddItem = this.handleAddItem.bind(this);
+    }
+
+    handleAddItem(e) {
+        e.preventDefault();
+        this.props.onAddItem();
     }
 
     render() {
@@ -31,7 +38,7 @@ class ItemsList extends Component {
                                 />
                             ))}
                         </Form>
-                        <Button onClick={this.props.onAddItem}>
+                        <Button onClick={this.handleAddItem}>
                             Add Item
                         </Button>
                     </Col>

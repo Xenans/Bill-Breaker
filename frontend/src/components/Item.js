@@ -20,14 +20,14 @@ class Item extends Component {
                             <Form.Control
                                 type="text"
                                 placeholder="Enter Item"
-                                value={this.props.item.itemName}
-                                onChange={(e) => this.props.onChangeItemName(e.target.value, this.props.item.id)}
+                                value={this.props.item.name}
+                                onChange={(e) => this.props.onChangeItemName(this.props.item.id, e.target.value)}
                             />
                             <Form.Control
                                 type="number"
                                 placeholder="Enter Price"
-                                value={this.props.item.itemPrice}
-                                onChange={(e) => this.props.onChangeItemPrice(e.target.value, this.props.item.id)}
+                                value={this.props.item.price}
+                                onChange={(e) => this.props.onChangeItemPrice(this.props.item.id, e.target.value)}
                             />
                         </Col>
                         <Col>
