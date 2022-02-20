@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/App.css';
 
-import AddPeople from './AddPeople'
+import AddPerson from './AddPerson'
 import Bill from './Bill'
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
