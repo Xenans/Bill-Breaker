@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -27,7 +27,9 @@ class Header extends Component {
                         </Card>))}
                     </Col>
                 </Container>
-                <Link to="/additems" className="nextButton">Next</Link>
+                <Link to="/additems" className="nextButton">
+                    <Button>Next</Button>
+                </Link>
             </>
         );
     }
