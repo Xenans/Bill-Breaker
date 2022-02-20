@@ -26,8 +26,8 @@ class ItemsList extends Component {
                             <Item
                                 item={item}
                                 onDelete={this.props.onDelete}
-                                changeName={this.props.changeName}
-                                changePrice={this.props.changePrice}
+                                onChangeItemName={this.props.onChangeItemName}
+                                onChangeItemPrice={this.props.onChangeItemPrice}
                             />
                         ))}
                     </Form>

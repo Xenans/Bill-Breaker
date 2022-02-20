@@ -57,6 +57,7 @@ class App extends Component {
     // Adds item to Item state variable
     addItem(name="", price="") {
         let nextId;
+
         if (this.state.items.length === 0) {
             nextId = 1;
         }
@@ -247,8 +248,8 @@ class App extends Component {
                                     items={this.state.items}
                                     onDelete={this.deleteItem}
                                     onAdd={this.addItem}
-                                    changeName={this.setItemName}
-                                    changePrice={this.setItemPrice}
+                                    onChangeItemName={this.setItemName}
+                                    onChangeItemPrice={this.setItemPrice}
                                 />
                                 <h1>dsadsa</h1>
                             </Route>
@@ -256,7 +257,7 @@ class App extends Component {
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemClicked.bind(this)} 
+                                    onClick={this.itemClicked} 
                                 />
                             </Route>
 
