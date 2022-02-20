@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row'
 
 import Form from 'react-bootstrap/Form'
 import '../style/ItemList.css';
+import {Link} from 'react-router-dom'
 
 class ItemsList extends Component {
 
@@ -38,6 +39,8 @@ class ItemsList extends Component {
                         <Button onClick={this.props.onAdd}>
                             Add Item
                         </Button>
+                        <Link to="/addpeople" className="nextButton">Next</Link>
+
                         <Button>
                             Next
                         </Button>

@@ -102,22 +102,31 @@ class App extends Component {
                     <Navbar />
                     <div className="content">
                         <Switch>
+                            {/* Welcome route */}
                             <Route exact path="/">
-                                <ItemsList
-                                items={this.state.items}
-                                onDelete={this.deleteItem.bind(this)}
-                                onAdd={this.addItem.bind(this)}
-                                changeName={this.changeName.bind(this)}
-                                changePrice={this.changePrice.bind(this)}
-                                />
-                                <AddPeople />
+                                <Upload />
+                            </Route>
+
+                            <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
                                     onClick={this.itemClicked.bind(this)} />
+
                             </Route>
-                            <Route path="/ddd" element={<h1>dsadsa</h1>}>
+
+                            <Route path="/additems">
+                                <ItemsList
+                                    items={this.state.items}
+                                    onDelete={this.deleteItem.bind(this)}
+                                    onAdd={this.addItem.bind(this)}
+                                    changeName={this.changeName.bind(this)}
+                                    changePrice={this.changePrice.bind(this)}
+                                    />
                                 <h1>dsadsa</h1>
-                                <Upload />
+                            </Route>
+
+                            <Route path="addpeople">
+                                <AddPeople />
                             </Route>
 
 

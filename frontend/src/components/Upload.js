@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom'
 
 class Upload extends Component {
 
@@ -65,6 +66,7 @@ class Upload extends Component {
                     </Button>
                 </div>
                 {this.fileData()}
+                <Link to="/selectfood" className="nextButton">Next</Link>
             </div>
         );
     }
