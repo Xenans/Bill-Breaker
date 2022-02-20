@@ -40,6 +40,7 @@ class App extends Component {
             users: []
         };
 
+        this.getItem = this.getItem.bind(this);
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.setItemName = this.setItemName.bind(this);
@@ -47,13 +48,14 @@ class App extends Component {
         this.addUserToItem = this.addUserToItem.bind(this);
         this.removeUserFromItem = this.removeUserFromItem.bind(this);
 
+        this.getUser = this.getUser.bind(this);
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         this.setUserName = this.setUserName.bind(this);
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
 
-        this.itemClicked = this.itemClicked.bind(this);
+        this.itemSelected = this.itemSelected.bind(this);
     }
 
     // Adds item to Item state variable
@@ -95,6 +97,13 @@ class App extends Component {
             // Remove all occurrences of the item in the Users state variable's users
             this.state.users.map(user => this.removeItemFromUser(user.id, id));
         }
+    }
+
+    getItem(id) {
+        console.log("DDASDSADAS")
+        console.log(this.state)
+
+        return this.state.items.find(item => item.id === id);
     }
 
     // Sets the name for an item
@@ -145,7 +154,7 @@ class App extends Component {
     }
 
     // Adds a user to the User state variable
-    addUser() {
+    addUser(name = "") {
         let nextId;
         if (this.state.users.length === 0) {
             nextId = 1;
@@ -156,13 +165,15 @@ class App extends Component {
 
         const user = {
             id: nextId,
-            name: "",
+            name: name,
             items: []
         }
 
         this.setState({
             users: this.state.users.concat(user)
         });
+
+        console.log(this.state.users);
     }
 
     // Removes a user from the Users state variable
@@ -179,6 +190,10 @@ class App extends Component {
             // Remove all occurrences of the user in the Item state variable's items
             this.state.items.map(item => this.removeUserFromItem(item.id, id));
         }
+    }
+
+    getUser(id) {
+        return this.state.users.find(user => user.id === id);
     }
 
     // Sets the name for a user
@@ -221,13 +236,9 @@ class App extends Component {
         }
     }
 
-    // Logs item and user id to console
-    itemClicked(itemId, userId) {
-        console.log(itemId)
-        console.log(userId)
-        // add user to the food's user array using item and user id
+    // Adds the item to the user's items
+    itemSelected(itemId, userId) {
 
-        // add item to user's food array using user id and item id
     }
 
     render() {
@@ -263,28 +274,39 @@ class App extends Component {
                                 />
                             </Route>
 
-
-                            <Route path="/addpeople">
-                                <AddPeople />
-                            </Route>
-
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemClicked}
+                                    user={this.state.users[this.state.users.length - 1]}
+                                    onSelectItem={this.addItemToUser}
                                 />
                             </Route>
-                            <Route path="/summary">
-                                <Summary />
+
+                            <Route path="/addperson">
+                                <AddPerson
+                                    onSubmit={this.addUser}
+                                />
                             </Route>
 
+                            <Route path="/summary">
+                                <Summary 
+                                    users = {this.state.users}
+                                    items = {this.state.items}
+                                    onDelete={this.deleteItem}
+                                    getItem = {this.getItem}
+                                    getUser = {this.getUser}/>
+                            </Route>
+
+                            <Route path="/bill">
+                                <Bill
+                                    users={this.state.users}
+                                    items={this.state.items} />
+                            </Route>
 
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
                                 </Route>
                             </Container>
-
-
                         </Switch>
 
                     </div>
