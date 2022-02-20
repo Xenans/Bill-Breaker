@@ -1,0 +1,26 @@
+.everyoneButton {
+    position: absolute;
+    left: 3%;
+    bottom:7%;
+}
+
+.addButton {
+    position: absolute;
+    right: 3%;
+    bottom: 7%;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+}
+
+h1 {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.nameInput {
+    height: 4em;
+}
