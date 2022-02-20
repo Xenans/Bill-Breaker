@@ -50,11 +50,11 @@ class Item extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(itemId) {
+    handleClick() {
         if (this.state.selected) {
-            this.props.onDeselect(this.props.user.id, itemId);
+            this.props.onDeselect(this.props.user.id, this.props.item.id);
         } else {
-            this.props.onSelect(this.props.user.id, itemId);
+            this.props.onSelect(this.props.user.id, this.props.item.id);
         }
 
         this.setState({

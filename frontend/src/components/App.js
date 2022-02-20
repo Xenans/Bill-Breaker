@@ -98,8 +98,7 @@ class App extends Component {
     }
 
     getItem(id) {
-        console.log("DDASDSADAS")
-        console.log(this.state)
+        console.log(this.state.items);
 
         return this.state.items.find(item => item.id === id);
     }
