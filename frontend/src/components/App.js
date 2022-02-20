@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     addItem = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         var nextId
         if (this.state.items.length === 0) {
             nextId = 1
@@ -56,6 +56,24 @@ class App extends Component {
             id: nextId,
             itemName: "",
             itemPrice: "",
+        }
+
+        this.setState({ items: this.state.items.concat(item) })
+    }
+
+    addSpecificItem = (name, price) => {
+        // e.preventDefault()
+        var nextId
+        if (this.state.items.length === 0) {
+            nextId = 1
+        }
+        else {
+            nextId = this.state.items[this.state.items.length - 1].id + 1
+        }
+        const item = {
+            id: nextId,
+            itemName: name,
+            itemPrice: price,
         }
 
         this.setState({ items: this.state.items.concat(item) })
@@ -104,14 +122,10 @@ class App extends Component {
                         <Switch>
                             {/* Welcome route */}
                             <Route exact path="/">
-                                <Upload />
-                            </Route>
-
-                            <Route path="/selectfood">
-                                <FoodSelection
+                                <Upload
                                     items={this.state.items}
-                                    onClick={this.itemClicked.bind(this)} />
-
+                                    add={this.addSpecificItem.bind(this)}
+                                    />
                             </Route>
 
                             <Route path="/additems">
@@ -123,6 +137,13 @@ class App extends Component {
                                     changePrice={this.changePrice.bind(this)}
                                     />
                                 <h1>dsadsa</h1>
+                            </Route>
+
+                            <Route path="/selectfood">
+                                <FoodSelection
+                                    items={this.state.items}
+                                    onClick={this.itemClicked.bind(this)} />
+
                             </Route>
 
                             <Route path="addpeople">

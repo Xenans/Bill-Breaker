@@ -37,7 +37,7 @@ class Header extends Component {
                         </Card>))}
                     </Col>
                 </Container>
-                <Link to="/additems" className="nextButton">
+                <Link to="/addpeople" className="nextButton">
                     <Button>Next</Button>
                 </Link>
             </>

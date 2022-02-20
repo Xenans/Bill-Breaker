@@ -39,7 +39,7 @@ class ItemsList extends Component {
                         <Button onClick={this.props.onAdd}>
                             Add Item
                         </Button>
-                        <Link to="/addpeople" className="nextButton">
+                        <Link to="/selectfood" className="nextButton">
                             <Button>Next</Button>
                         </Link>
                         <Button>
