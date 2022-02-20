@@ -5,7 +5,7 @@ import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AddPeople from './AddPeople'
 import Upload from './Upload';
@@ -60,7 +60,7 @@ class App extends Component {
     }
 
     // Adds item to Item state variable
-    addItem(name="", price="") {
+    addItem(name = "", price = "") {
         let nextId;
 
         if (this.state.items.length === 0) {
@@ -77,8 +77,8 @@ class App extends Component {
             users: []
         }
 
-        this.setState({ 
-            items: this.state.items.concat(item) 
+        this.setState({
+            items: this.state.items.concat(item)
         });
     }
 
@@ -86,13 +86,13 @@ class App extends Component {
     deleteItem(id) {
         // Check if item is in Item state variable
         const item = this.state.items.find(item => item.id === id);
-        
+
         if (item !== undefined) {
             // Remove item from Items state variable
             const newArr = this.state.items.filter((item) => item.id !== id);
 
-            this.setState({ 
-                items: newArr 
+            this.setState({
+                items: newArr
             });
 
             // Remove all occurrences of the item in the Users state variable's users
@@ -103,14 +103,14 @@ class App extends Component {
     // Sets the name for an item
     setItemName(id, name) {
         this.setState(prevState => ({
-            items: prevState.items.map(item => (item.id === id ? {...item, name: name} : item))
+            items: prevState.items.map(item => (item.id === id ? { ...item, name: name } : item))
         }))
     }
 
     // Sets the price for an item
     setItemPrice(id, price) {
         this.setState(prevState => ({
-            items: prevState.items.map(item => (item.id === id ? {...item, price: price} : item))
+            items: prevState.items.map(item => (item.id === id ? { ...item, price: price } : item))
         }))
     }
 
@@ -123,12 +123,12 @@ class App extends Component {
         if (item !== undefined && user !== undefined && !(item.users.includes(userId))) {
             // Add the user to the item's users
             this.setState(prevState => ({
-                items: prevState.items.map(item => (item.id === itemId ? {...item, users: [...item.users, userId]} : item))
+                items: prevState.items.map(item => (item.id === itemId ? { ...item, users: [...item.users, userId] } : item))
             }))
 
             // Add the item to the user's items to obey m2m relationship
             this.addItemToUser(userId, itemId);
-        } 
+        }
     }
 
     // Removes a user from an item's users
@@ -139,12 +139,12 @@ class App extends Component {
         if (item !== undefined && item.users.includes(userId)) {
             // Remove the user from the item's user
             this.setState(prevState => ({
-                items: prevState.items.map(item => (item.id === itemId ? {...item, users: item.users.filter(user => user !== userId)} : item))
+                items: prevState.items.map(item => (item.id === itemId ? { ...item, users: item.users.filter(user => user !== userId) } : item))
             }))
 
             // Remove the item from the user's items to obey m2m relationship
             this.removeItemFromUser(userId, itemId);
-        } 
+        }
     }
 
     // Adds a user to the User state variable
@@ -163,22 +163,22 @@ class App extends Component {
             items: []
         }
 
-        this.setState({ 
-            users: this.state.users.concat(user) 
+        this.setState({
+            users: this.state.users.concat(user)
         });
     }
 
     // Removes a user from the Users state variable
     deleteUser(id) {
         const user = this.state.users.find(user => user.id === id);
-        
+
         if (user !== undefined) {
             // Remove user for Users state variable
             const newArr = this.state.users.filter((user) => user.id !== id);
-            this.setState({ 
-                users: newArr 
+            this.setState({
+                users: newArr
             });
-            
+
             // Remove all occurrences of the user in the Item state variable's items
             this.state.items.map(item => this.removeUserFromItem(item.id, id));
         }
@@ -187,7 +187,7 @@ class App extends Component {
     // Sets the name for a user
     setUserName(id, name) {
         this.setState(prevState => ({
-            users: prevState.users.map(user => (user.id === id ? {...user, name: name} : user))
+            users: prevState.users.map(user => (user.id === id ? { ...user, name: name } : user))
         }))
     }
 
@@ -200,28 +200,28 @@ class App extends Component {
         if (item !== undefined && user !== undefined && !(user.items.includes(itemId))) {
             // Add the item to the user's items
             this.setState(prevState => ({
-                users: prevState.users.map(user => (user.id === userId ? {...user, items: [...user.items, itemId]} : user))
+                users: prevState.users.map(user => (user.id === userId ? { ...user, items: [...user.items, itemId] } : user))
             }))
 
             // Add the user to the item's users to obey m2m relationship
             this.addUserToItem(itemId, userId);
-        } 
+        }
     }
 
     // Removes an item (id) from a user's items
     removeItemFromUser(userId, itemId) {
         // Check if item has not already been removed
         const user = this.state.users.find(user => user.id === userId);
-        
+
         if (user !== undefined && user.items.includes(itemId)) {
             // Remove the item from the user's items
             this.setState(prevState => ({
-                users: prevState.users.map(user => (user.id === userId ? {...user, items: user.items.filter(item => item !== itemId)} : user))
+                users: prevState.users.map(user => (user.id === userId ? { ...user, items: user.items.filter(item => item !== itemId) } : user))
             }))
 
             // Remove the user from the item's users to obey m2m relationship
             this.removeUserFromItem(itemId, userId);
-        } 
+        }
     }
 
     // Logs item and user id to console
@@ -245,6 +245,9 @@ class App extends Component {
                                 <Container className="mt-4 mb-4">
                                     <Signup />
                                 </Container>
+                            </Route>
+
+                            <Route path="/upload">
                                 <Upload
                                     items={this.state.items}
                                     add={this.addItem}
@@ -270,13 +273,14 @@ class App extends Component {
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemClicked} 
+                                    onClick={this.itemClicked}
                                 />
                             </Route>
                             <Route path="/summary">
                                 <Summary />
                             </Route>
                             
+
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
                                 </Route>
