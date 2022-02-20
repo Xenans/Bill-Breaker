@@ -4,9 +4,11 @@ import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container'
 
-import { Component } from 'react'
+import { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import AddPeople from './AddPeople'
+import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
 
@@ -94,23 +96,36 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                {/* <Navbar /> */}
-                <div className="content">
-                    {/* <ItemsList
-                        items={this.state.items}
-                        onDelete={this.deleteItem.bind(this)}
-                        onAdd={this.addItem.bind(this)}
-                        changeName={this.changeName.bind(this)}
-                        changePrice={this.changePrice.bind(this)}
-                    />
-                    <AddPeople /> */}
-                    <FoodSelection
-                        items={this.state.items}
-                        onClick={this.itemClicked.bind(this)} />
-                </div>
+            
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    <div className="content">
+                        <Switch>
+                            <Route exact path="/">
+                                <ItemsList
+                                items={this.state.items}
+                                onDelete={this.deleteItem.bind(this)}
+                                onAdd={this.addItem.bind(this)}
+                                changeName={this.changeName.bind(this)}
+                                changePrice={this.changePrice.bind(this)}
+                                />
+                                <AddPeople />
+                                <FoodSelection
+                                    items={this.state.items}
+                                    onClick={this.itemClicked.bind(this)} />
+                            </Route>
+                            <Route path="/ddd" element={<h1>dsadsa</h1>}>
+                                <h1>dsadsa</h1>
+                                <Upload />
+                            </Route>
 
-            </div>
+
+                        </Switch>
+
+                    </div>
+                </div>
+            </Router>
         );
     }
 }
