@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form'
+import '../style/Bill.css';
 import { Link } from 'react-router-dom'
 
 class Bill extends Component {
@@ -25,12 +25,25 @@ class Bill extends Component {
     render() {
         return (
             <>
-                <h1>Here are the results</h1>
-                <div>
-                    {this.props.users.map((user) => (
-                        <h2>{user.name} {this.calculatePrice(user.id)}</h2>
-                    ))}
-                </div>
+
+                <Container>
+                    <Col md={{ span: 4, offset: 2 }}>
+                        <h1>Here are the results</h1>
+                        {this.props.users.map((user) => (
+                            <Card>
+                                <Card.Body className="cardStyle">
+                                    <Container>
+                                        <Row>
+                                            <Col md={4}>{user.name}: </Col>
+                                            <Col md={{ span: 4, offset: 4 }}>${this.calculatePrice(user.id)}</Col>
+                                        </Row>
+                                    </Container>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Col>
+                </Container>
+
             </>
         );
     }
