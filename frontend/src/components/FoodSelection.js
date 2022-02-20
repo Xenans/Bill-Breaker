@@ -18,6 +18,7 @@ class FoodSelection extends Component {
         return (
             <>
                 <Container>
+                    <h1 id="title">What food did {this.props.user.name} eat?</h1>
                     <Col>
                         {this.props.items.map((item) => (
                             <Item 

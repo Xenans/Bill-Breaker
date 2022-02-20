@@ -16,9 +16,8 @@
     padding-top: 20vh;
 }
 
-h1 {
-    padding-left: 30px;
-    padding-top: 30px;
+.title {
+    margin: 30px;
 }
 
 .nameInput {

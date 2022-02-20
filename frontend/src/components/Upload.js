@@ -63,14 +63,14 @@ class Upload extends Component {
             return (
                 <div>
                     <br />
-                    <h4>Upload: {this.state.selectedFile.name}</h4>
+                    <h4>Uploaded: {this.state.selectedFile.name}</h4>
                 </div>
             );
         } else {
             return (
                 <div>
                     <br />
-                    <h4>Open your Uber Eats Receipt:</h4>
+                    <h4>Open your Uber Eats receipt:</h4>
                 </div>
             );
         }
@@ -81,26 +81,23 @@ class Upload extends Component {
         return (
 
             <Container className="mainDiv">
-                <Row>
+                <Row className="rowSpacing">
                     {this.fileData()}
-                </Row>
-                <Row>
+                    
                     <div>
-                        <span className='btn btn-primary btn-file'>Choose File
+                        <span className='btn btn-primary chooseFileButton'>Choose File
                             <input type="file" onChange={this.onFileChange} />
                         </span>
                         <Link to="/additems" className="uploadButton">
                             <Button onClick={this.onFileUpload}>Upload!</Button>
                         </Link>
                     </div>
+                </Row>
 
-                </Row>
-                <Row>
-                    <h4>Or enter your order manually</h4>
-                </Row>
-                <Row>
+                <Row className="rowSpacing">
+                    <h4>Or enter your order manually:</h4>
                     <Link to="/additems" className="manualButton">
-                        <Button onClick={this.onFileUpload}>Select Manually</Button>
+                        <Button onClick={this.onFileUpload}>Enter Manually</Button>
                     </Link>
                 </Row>
             </Container>

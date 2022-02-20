@@ -20,7 +20,7 @@ class ItemsList extends Component {
         return (
             <>
                 <Container>
-                    <h3>Here is what we found</h3>
+                    <h1 id="title">Here is what we found...</h1>
                     <Form>
                         {this.props.items.map((item) => (
                             <Item

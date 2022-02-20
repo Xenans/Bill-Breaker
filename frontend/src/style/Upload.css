@@ -1,8 +1,9 @@
-.btn-file {
+.chooseFileButton {
     position: relative;
     overflow: hidden;
+    margin: 5px;
 }
-.btn-file input[type=file] {
+.chooseFileButton input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
@@ -15,6 +16,14 @@
     outline: none;   
     cursor: inherit;
     display: block;
+}
+
+.uploadButton {
+    margin: 5px;
+}
+
+.rowSpacing {
+    margin: 20px;
 }
 
 .mainDiv {

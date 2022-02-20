@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 
-import '../style/AddPeople.css';
-
+import '../style/AddPerson.css';
 
 class AddPerson extends Component {
 
@@ -29,7 +28,7 @@ class AddPerson extends Component {
     render() {
         return (
             <>
-                <h1>Add a Person:</h1>
+                <h1 className="title">Add a Person:</h1>
 
                 <Form className="input">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
