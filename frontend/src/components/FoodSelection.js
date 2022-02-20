@@ -14,8 +14,9 @@ class Header extends Component {
         super(props);
     }
 
-    clickHandler(item, fun, e) {
-        fun(item.id, e);
+    clickHandler(item, e) {
+        this.props.onClick(item.id, e);
+
         if (!!e.target.className.match(/^unchecked card-body$/)) {
             e.target.className = "checked card-body"
         }
@@ -29,12 +30,13 @@ class Header extends Component {
             <>
                 <Container>
                     <Col>
-                        {this.props.items.map((item) =>
-                        (<Card
-                            // style={{ width: '20rem' }}
-                            onClick={(e) => this.clickHandler(item, this.props.onClick, e)}>
-                            <Card.Body className='unchecked'>{item.name}: ${item.price}</Card.Body>
-                        </Card>))}
+                        {this.props.items.map((item) => 
+                                <Card
+                                    onClick={(e) => this.clickHandler(item, e)}>
+                                    <Card.Body className='unchecked'>{item.name}: ${item.price}</Card.Body>
+                                </Card>
+                            )
+                        }
                     </Col>
                 </Container>
                 <Link to="/addpeople" className="nextButton">

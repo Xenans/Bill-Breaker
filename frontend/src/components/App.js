@@ -48,7 +48,7 @@ class App extends Component {
         this.addItemToUser = this.addItemToUser.bind(this);
         this.removeItemFromUser = this.removeItemFromUser.bind(this);
 
-        this.itemClicked = this.itemClicked.bind(this);
+        this.itemSelected = this.itemSelected.bind(this);
     }
 
     // Adds item to Item state variable
@@ -216,13 +216,9 @@ class App extends Component {
         } 
     }
 
-    // Logs item and user id to console
-    itemClicked(itemId, userId) {
-        console.log(itemId)
-        console.log(userId)
-        // add user to the food's user array using item and user id
+    // Adds the item to the user's items
+    itemSelected(itemId, userId) {
 
-        // add item to user's food array using user id and item id
     }
 
     render() {
@@ -254,7 +250,7 @@ class App extends Component {
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
-                                    onClick={this.itemClicked} 
+                                    onClick={this.itemSelected} 
                                 />
                             </Route>
 
