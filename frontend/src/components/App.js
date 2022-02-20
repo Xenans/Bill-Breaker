@@ -262,7 +262,6 @@ class App extends Component {
                                     onChangeItemName={this.setItemName}
                                     onChangeItemPrice={this.setItemPrice}
                                 />
-                                <h1>dsadsa</h1>
                             </Route>
 
 
@@ -279,7 +278,7 @@ class App extends Component {
                             <Route path="/summary">
                                 <Summary />
                             </Route>
-                            
+
 
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
