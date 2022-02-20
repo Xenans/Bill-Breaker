@@ -3,3 +3,11 @@
     right: 3%;
     bottom: 7%;
 }
+
+.unchecked {
+    background-color:antiquewhite
+}
+
+.checked {
+    background-color: grey
+}

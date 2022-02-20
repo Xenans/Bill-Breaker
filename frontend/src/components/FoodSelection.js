@@ -14,6 +14,16 @@ class Header extends Component {
         super(props);
     }
 
+    clickHandler(item, fun, e) {
+        fun(item.id, e);
+        if (!!e.target.className.match(/^unchecked card-body$/)) {
+            e.target.className = "checked card-body"
+        }
+        else {
+            e.target.className = "unchecked card-body"
+        }
+    }
+
     render() {
         return (
             <>
@@ -22,8 +32,8 @@ class Header extends Component {
                         {this.props.items.map((item) =>
                         (<Card
                             // style={{ width: '20rem' }}
-                            onClick={() => this.props.onClick(item.itemName, this)}>
-                            <Card.Body>{item.itemName}: ${item.itemPrice}</Card.Body>
+                            onClick={(e) => this.clickHandler(item, this.props.onClick, e)}>
+                            <Card.Body className='unchecked'>{item.itemName}: ${item.itemPrice}</Card.Body>
                         </Card>))}
                     </Col>
                 </Container>
