@@ -139,6 +139,11 @@ class App extends Component {
                                 <h1>dsadsa</h1>
                             </Route>
 
+
+                            <Route path="/addpeople">
+                                <AddPeople />
+                            </Route>
+
                             <Route path="/selectfood">
                                 <FoodSelection
                                     items={this.state.items}
@@ -146,9 +151,6 @@ class App extends Component {
 
                             </Route>
 
-                            <Route path="addpeople">
-                                <AddPeople />
-                            </Route>
 
 
                         </Switch>

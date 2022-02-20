@@ -4,6 +4,7 @@ import '../style/AddPeople.css';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
+import { Link } from 'react-router-dom'
 
 class AddPeople extends Component {
 
@@ -24,9 +25,14 @@ class AddPeople extends Component {
                         </Form.Text>
                     </Form.Group>
                 </Form>
-
-                <Button className="everyoneButton">That's Everyone</Button>
-                <Button className="addButton">Submit</Button>
+                <Link to="/selectfood" className="addButton">
+                    <Button>Select Food</Button>
+                </Link>
+                <Link to="/" className="everyoneButton">
+                    <Button>That's Everyone</Button>
+                </Link>
+                {/* <Button className="everyoneButton">That's Everyone</Button>
+                <Button className="addButton">Submit</Button> */}
             </>
         );
     }
