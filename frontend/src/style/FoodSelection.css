@@ -5,9 +5,9 @@
 }
 
 .unchecked {
-    background-color:antiquewhite
+    background-color: rgb(237, 246, 249)
 }
 
 .checked {
-    background-color: grey
+    background-color: rgb(131, 197, 190)
 }

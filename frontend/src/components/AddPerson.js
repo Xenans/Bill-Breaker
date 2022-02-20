@@ -46,7 +46,9 @@ class AddPerson extends Component {
                     </Form.Group>
                 </Form>
 
-                <Button className="everyoneButton">That's Everyone</Button>
+                <Link to="/summary" className="everyoneButton">
+                    <Button>That's Everyone</Button>
+                </Link>
 
                 <Link 
                     to="/selectfood" 

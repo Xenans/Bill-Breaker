@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import '../style/Upload.css';
 
 class Upload extends Component {
 
@@ -57,14 +62,15 @@ class Upload extends Component {
         if (this.state.selectedFile) {
             return (
                 <div>
-                    <p>File Type: {this.state.selectedFile.type}</p>
+                    <br />
+                    <h4>Upload: {this.state.selectedFile.name}</h4>
                 </div>
             );
         } else {
             return (
                 <div>
                     <br />
-                    <h4>Choose before Pressing the Upload button</h4>
+                    <h4>Open your Uber Eats Receipt:</h4>
                 </div>
             );
         }
@@ -73,19 +79,31 @@ class Upload extends Component {
     render() {
 
         return (
-            <div>
-                <div>
-                    <input type="file" onChange={this.onFileChange} />
 
-                    <Link to="/additems" className="uploadButton">
-                        <Button onClick={this.onFileUpload}>Upload!</Button>
+            <Container className="mainDiv justify-content-center">
+                <Row>
+                    {this.fileData()}
+                </Row>
+                <Row>
+                    <div>
+                        <span className='btn btn-primary btn-file'>Choose File
+                            <input type="file" onChange={this.onFileChange} />
+                        </span>
+                        <Link to="/additems" className="uploadButton">
+                            <Button onClick={this.onFileUpload}>Upload!</Button>
+                        </Link>
+                    </div>
+
+                </Row>
+                <Row>
+                    <h4>Or enter your order manually</h4>
+                </Row>
+                <Row>
+                    <Link to="/additems" className="manualButton">
+                        <Button onClick={this.onFileUpload}>Select Manually</Button>
                     </Link>
-                </div>
-                {this.fileData()}
-                <Link to="/additems" className="nextButton">
-                    <Button onClick={this.onFileUpload}>Next</Button>
-                </Link>
-            </div>
+                </Row>
+            </Container>
         );
     }
 }
