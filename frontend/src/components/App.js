@@ -60,7 +60,7 @@ class App extends Component {
     }
 
     // Adds item to Item state variable
-    addItem(e, name="", price="") {
+    addItem(name="", price="") {
         let nextId;
 
         if (this.state.items.length === 0) {
