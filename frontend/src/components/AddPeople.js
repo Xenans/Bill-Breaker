@@ -28,7 +28,7 @@ class AddPeople extends Component {
                 <Link to="/selectfood" className="addButton">
                     <Button>Select Food</Button>
                 </Link>
-                <Link to="/" className="everyoneButton">
+                <Link to="/summary" className="everyoneButton">
                     <Button>That's Everyone</Button>
                 </Link>
                 {/* <Button className="everyoneButton">That's Everyone</Button>

@@ -11,6 +11,8 @@ import AddPeople from './AddPeople'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
+import Summary from './Summary'
+import Bill from './Bill'
 import Signup from './Signup'
 import Login from './Login'
 
@@ -274,6 +276,10 @@ class App extends Component {
                                     onClick={this.itemClicked}
                                 />
                             </Route>
+                            <Route path="/summary">
+                                <Summary />
+                            </Route>
+                            
 
                             <Container className="mt-4 mb-4">
                                 <Route path="/login" component={Login}>
