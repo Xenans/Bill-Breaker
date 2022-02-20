@@ -1,18 +1,15 @@
 import { Component } from 'react'
 import React from 'react';
-import Navbar from "./Navbar/Navbar";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import '../style/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import AddPeople from './AddPeople'
 import Upload from './Upload';
 import FoodSelection from './FoodSelection'
 import ItemsList from './ItemsList'
-
-import '../style/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./Navbar/Navbar";
 
 class App extends Component {
 

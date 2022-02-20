@@ -1,7 +1,8 @@
-import axios from 'axios';
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+
+import Button from 'react-bootstrap/Button';
 
 class Upload extends Component {
 

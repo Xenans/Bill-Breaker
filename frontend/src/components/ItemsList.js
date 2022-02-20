@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-import Item from './Item'
+import { Link } from 'react-router-dom'
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
-
 import Form from 'react-bootstrap/Form'
 
 import '../style/ItemList.css';
-import { Link } from 'react-router-dom'
+
+import Item from './Item'
 
 class ItemsList extends Component {
 

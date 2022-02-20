@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
-import '../style/AddPeople.css';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
+
+import '../style/AddPeople.css';
+
 
 class AddPeople extends Component {
 
