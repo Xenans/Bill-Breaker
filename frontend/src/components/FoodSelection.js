@@ -20,12 +20,12 @@ class FoodSelection extends Component {
                 <Container>
                     <Col>
                         {this.props.items.map((item) => (
-                            <Item 
+                            <Item
                                 key={item.id}
-                                item={item} 
-                                user={this.props.user} 
-                                onSelect={this.props.onSelectItem} 
-                                onDeselect={this.props.onDeselectItem} 
+                                item={item}
+                                user={this.props.user}
+                                onSelect={this.props.onSelectItem}
+                                onDeselect={this.props.onDeselectItem}
                             />
                         ))}
                     </Col>
@@ -43,7 +43,7 @@ class Item extends Component {
     constructor(props) {
         super(props);
 
-        this.state =({
+        this.state = ({
             selected: false
         })
 
