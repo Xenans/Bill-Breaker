@@ -33,8 +33,22 @@ class Upload extends Component {
 
         // Request made to the backend api
         // Send formData object
-        axios.post("http://localhost:8000/api/sean/", formData).then(response => { console.log(response) });
+        axios.post("http://localhost:8000/api/sean/", formData).then(response => { this.updateMenu(response) });
     };
+
+    updateMenu(response) {
+        console.log(response)
+        console.log(response.data['data'][0])
+        let menuitems = response.data['data'][0]
+        console.log(menuitems)
+        for (let i = 0; i < menuitems.length; i++) {
+            let menuitem = menuitems[i]
+            console.log(menuitem)
+            this.props.add(menuitem[1], menuitem[2])
+
+        }
+
+    }
 
     // File content to be displayed after
     // file upload is complete
@@ -66,7 +80,7 @@ class Upload extends Component {
                     </Button>
                 </div>
                 {this.fileData()}
-                <Link to="/selectfood" className="nextButton">
+                <Link to="/additems" className="nextButton">
                     <Button>Next</Button>
                 </Link>
             </div>
